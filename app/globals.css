@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #f0f8ff;
+  --matrix-color: #22d3ee;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #f0f8ff;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Matrix animasyon keyframe'leri */
+@keyframes gradientShift {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.7);
+}
+
+.border-glow {
+  box-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #22d3ee;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* Giriş/Üyelik sayfaları için grid pattern */
+.bg-grid-pattern {
+  background-size: 20px 20px;
+  background-image:
+    linear-gradient(to right, rgba(0, 170, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 170, 255, 0.07) 1px, transparent 1px);
+}
+
+/* Blog Content Styling */
+.blog-content h2 {
+  @apply text-2xl font-bold text-cyan-400 mt-10 mb-4;
+}
+
+.blog-content h3 {
+  @apply text-xl font-bold text-white mt-8 mb-3;
+}
+
+.blog-content p {
+  @apply text-gray-300 mb-4 leading-relaxed;
+}
+
+.blog-content ul, .blog-content ol {
+  @apply text-gray-300 mb-6 pl-6;
+}
+
+.blog-content ul {
+  @apply list-disc;
+}
+
+.blog-content ol {
+  @apply list-decimal;
+}
+
+.blog-content li {
+  @apply mb-2;
+}
+
+.blog-content strong {
+  @apply text-cyan-300 font-semibold;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-cyan-500 pl-4 italic my-6 text-gray-400;
+}
+
+.blog-content a {
+  @apply text-cyan-400 underline hover:text-cyan-300 transition-colors;
+}
+
+/* Animasyon için stil */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blog-content > * {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.blog-content > *:nth-child(1) { animation-delay: 0.1s; }
+.blog-content > *:nth-child(2) { animation-delay: 0.2s; }
+.blog-content > *:nth-child(3) { animation-delay: 0.3s; }
+.blog-content > *:nth-child(4) { animation-delay: 0.4s; }
+.blog-content > *:nth-child(5) { animation-delay: 0.5s; }
+.blog-content > *:nth-child(n+6) { animation-delay: 0.6s; }
+
+/* Diğer global stiller buraya */
